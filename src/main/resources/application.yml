@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: reactive
+  webflux:
+    base-path: /v1/dev/welbyseely/demo
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus
+          - info
+          - health
