@@ -1,8 +1,3 @@
-spring:
-  main:
-    web-application-type: reactive
-  webflux:
-    base-path: /v1/dev/welbyseely/demo
 management:
   endpoints:
     web:
@@ -11,3 +6,19 @@ management:
           - prometheus
           - info
           - health
+server:
+  servlet:
+    context-path: /v1/dev/welbyseely/demo
+spring:
+  kafka:
+    bootstrap-servers: 'localhost:9092'
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  main:
+    web-application-type: servlet
